@@ -30,7 +30,7 @@ Multi-class classification. The target variable is `efficiency_class` with three
 |---|---|
 | Name | AI Execution Performance Log |
 | Files | `data/energy_efficient_dataset.csv` and `data/energy_efficient_dataset.xlsx` (same data) |
-| Source | *[Add the dataset source here, for example the Kaggle link]* |
+| Source | Kaggle |
 | Size | 7,167 rows and 12 columns: 10 numeric measurements, an `id` column, and the target |
 | Measurements | Power draw, temperature, execution time, throughput, CPU and GPU utilization, memory usage, energy consumption, system load, and a resource utilization index |
 | Target variable | `efficiency_class` (High, Moderate, Low) |
