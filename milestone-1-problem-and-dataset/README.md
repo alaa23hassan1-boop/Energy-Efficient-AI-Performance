@@ -19,7 +19,7 @@ are already collected (power draw, CPU and GPU use, memory, execution time, heat
 | Item | Detail |
 |---|---|
 | File | `data/energy_efficient_dataset.csv` (Excel version: `data/energy_efficient_dataset.xlsx`) |
-| Source | *[Add the dataset source here]* |
+| Source | *Kaggle* |
 | Size | 7,167 rows, 12 columns (10 numeric measurements, `id`, and the target) |
 | Target variable | `efficiency_class` (3 classes) |
 
