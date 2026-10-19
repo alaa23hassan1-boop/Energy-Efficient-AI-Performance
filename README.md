@@ -7,8 +7,7 @@ End-to-end machine learning project that classifies and predicts the efficiency 
 - **Target variable:** `efficiency_class` (`High_Efficiency`, `Moderate_Efficiency`, `Low_Efficiency`)
 - **Dataset:** `data/energy_efficient_dataset.csv`, 7,167 rows and 11 features (plus an `id` column)
 - **Dataset source:** *Kaggle*
-- **Team:** *Ala' Ahmed Saad Hassan   
-Ahmad Amjad Fawzi Ramadan   Abdalrahman Omar Dhefallah Almomani   Ahmad Ayman Wasef Toubeh   Yasmin Samih Ahmad Rabi*
+- **Team:** *Ala' Ahmed Saad Hassan ,Ahmad Amjad Fawzi Ramadan ,Abdalrahman Omar Dhefallah Almomani ,Ahmad Ayman Wasef Toubeh ,Yasmin Samih Ahmad Rabi*
 
 ## Project progress
 
