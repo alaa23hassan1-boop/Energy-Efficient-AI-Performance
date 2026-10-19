@@ -6,7 +6,7 @@ End-to-end machine learning project that classifies and predicts the efficiency 
 - **Problem type:** multi-class classification
 - **Target variable:** `efficiency_class` (`High_Efficiency`, `Moderate_Efficiency`, `Low_Efficiency`)
 - **Dataset:** `data/energy_efficient_dataset.csv`, 7,167 rows and 11 features (plus an `id` column)
-- **Dataset source:** [Kaggle](https://www.kaggle.com/datasets/colabsss/energy-efficient-ai-system-performance-dataset)
+- **Dataset source:** Kaggle
 - **Team:**
   - Ala' Ahmed Saad Hassan
   - Ahmad Amjad Fawzi Ramadan
@@ -54,7 +54,7 @@ Milestone 3 reads `data/clean_data.csv` and saves its output in `data/prepared/`
 - The dataset has **no missing values, no duplicate rows, and no outliers** (checked with the IQR rule and box plots).
 - The only cleaning changes were converting column names to lowercase and dropping the `id` column.
 - The target is **imbalanced**: `High_Efficiency` is only 8% of the rows. This will be handled during modeling.
-- The target is almost decided by `energy_consumption_kwh` (one column alone reaches 92% accuracy), so we will confirm with the coach if this column should be a feature. Details in [Milestone 3](milestone-3-data-preparation/README.md).
+- The class `efficiency_class` follows a simple rule on two columns (`energy_consumption_kwh` and `execution_time_ms`) that matches all rows. With these columns a model reaches about 99.9% accuracy, and without them about 51%. Details and our modeling proposal are in [Milestone 3](milestone-3-data-preparation/README.md).
 
 Full details are in [Milestone 2](milestone-2-data-cleaning/README.md) and [Milestone 3](milestone-3-data-preparation/README.md).
 
