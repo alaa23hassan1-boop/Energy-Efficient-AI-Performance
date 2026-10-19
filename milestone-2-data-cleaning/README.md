@@ -8,7 +8,7 @@ The cleaned dataset is saved in [`../data/clean_data.csv`](../data/clean_data.cs
 
 - **Target variable:** `efficiency_class` (3 classes)
 - **Raw data:** [`../data/energy_efficient_dataset.csv`](../data/energy_efficient_dataset.csv) (7,167 rows, 12 columns)
-- **Source:** *Kaggle*
+- **Source:** *[Kaggle](https://www.kaggle.com/datasets/colabsss/energy-efficient-ai-system-performance-dataset)*
 
 ## 2. Files
 
