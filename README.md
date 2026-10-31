@@ -21,6 +21,7 @@ End-to-end machine learning project that classifies and predicts the efficiency 
 | 1 | Problem definition and dataset understanding | Done | [`milestone-1-problem-and-dataset`](milestone-1-problem-and-dataset) |
 | 2 | Data understanding and cleaning | Done | [`milestone-2-data-cleaning`](milestone-2-data-cleaning) |
 | 3 | Data preparation for modeling (encoding, scaling, train/test split) | Done | [`milestone-3-data-preparation`](milestone-3-data-preparation) |
+| 4 | Modeling, cross-validated comparison and results | Done | [`milestone-4-modeling`](milestone-4-modeling) |
 
 ## Repository structure
 
@@ -40,14 +41,18 @@ Energy-Efficient-AI-Performance/
 │   ├── README.md                          <- cleaning decisions, data dictionary, before/after
 │   ├── cleaning_notebook.ipynb
 │   └── figures/
-└── milestone-3-data-preparation/
-    ├── README.md                          <- encoding, scaling, split, leakage checks
-    ├── preparation_notebook.ipynb
+├── milestone-3-data-preparation/
+│   ├── README.md                          <- encoding, scaling, split, leakage checks
+│   ├── preparation_notebook.ipynb
+│   └── figures/
+└── milestone-4-modeling/
+    ├── README.md                          <- models, comparison, final model, limits
+    ├── modeling_notebook.ipynb
     └── figures/
 ```
 
 Each milestone has its own folder with its own README and notebook. Datasets live in one shared `data/` folder, so nothing is copied twice.
-Milestone 3 reads `data/clean_data.csv` and saves its output in `data/prepared/`.
+Milestone 3 reads `data/clean_data.csv` and saves its output in `data/prepared/`. Milestone 4 reads `data/prepared/`.
 
 ## Key findings so far
 
