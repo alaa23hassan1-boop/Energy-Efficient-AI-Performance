@@ -1,0 +1,48 @@
+Set B columns: ['system_load_level', 'power_draw_watts', 'memory_usage_mb', 'cpu_utilization_percent', 'gpu_utilization_percent', 'throughput_ops_per_sec', 'thermal_output_c', 'resource_utilization_index']
+New features: ['power_per_throughput', 'cpu_gpu_total', 'cpu_gpu_gap', 'heat_per_watt', 'memory_per_throughput', 'load_x_power', 'power_per_util', 'throughput_per_load']
+
+=== Models (baseline accuracy = 0.505) ===
+Random Forest, 8 raw (Set B)             CV acc 0.478 | test acc 0.474 | macro-F1 0.305 | F1 High 0.000
+Random Forest, 8 + 8 new                 CV acc 0.477 | test acc 0.487 | macro-F1 0.319 | F1 High 0.000
+Random Forest balanced, depth 8          CV acc 0.366 | test acc 0.382 | macro-F1 0.324 | F1 High 0.114
+Gradient boosting, 8 + 8 new             CV acc 0.470 | test acc 0.478 | macro-F1 0.319 | F1 High 0.000
+Decision Tree depth 4, 8 + 8 new         CV acc 0.501 | test acc 0.504 | macro-F1 0.234 | F1 High 0.000
+Logistic Regression, 8 + 8 new (scaled)  CV acc 0.502 | test acc 0.499 | macro-F1 0.229 | F1 High 0.000
+
+=== Mutual information with the class ===
+New + pre-run features:
+cpu_gpu_total                 0.0114
+memory_per_throughput         0.0059
+system_load_level             0.0052
+gpu_utilization_percent       0.0049
+throughput_per_load           0.0031
+heat_per_watt                 0.0011
+power_per_util                0.0002
+memory_usage_mb               0.0000
+resource_utilization_index    0.0000
+thermal_output_c              0.0000
+throughput_ops_per_sec        0.0000
+cpu_utilization_percent       0.0000
+power_draw_watts              0.0000
+power_per_throughput          0.0000
+cpu_gpu_gap                   0.0000
+load_x_power                  0.0000
+dtype: float64
+Original 10 features (energy and time included):
+energy_consumption_kwh        0.7390
+execution_time_ms             0.1176
+system_load_level             0.0052
+gpu_utilization_percent       0.0049
+power_draw_watts              0.0000
+cpu_utilization_percent       0.0000
+memory_usage_mb               0.0000
+throughput_ops_per_sec        0.0000
+thermal_output_c              0.0000
+resource_utilization_index    0.0000
+dtype: float64
+
+=== Can we rebuild energy and time from the pre-run features? (5-fold R2) ===
+R2 for energy_consumption_kwh: -0.042   (0 = no better than the mean)
+R2 for execution_time_ms: -0.040   (0 = no better than the mean)
+Correlation energy vs power*time: -0.003
+Max |correlation| of any other raw column with energy: 0.014

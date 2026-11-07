@@ -9,6 +9,7 @@ with all 10 features (Set A) and without `energy_consumption_kwh` and `execution
 - **Input:** [`../data/prepared`](../data/prepared) (5,733 train rows, 1,434 test rows, 10 scaled features)
 - **Target variable:** `efficiency_class` (Low = 0, Moderate = 1, High = 2)
 - **Notebook:** [`modeling_notebook.ipynb`](modeling_notebook.ipynb)
+- **Extra experiment (feature engineering):** [`feature_engineering_experiment.py`](feature_engineering_experiment.py), output in [`feature_engineering_output.txt`](feature_engineering_output.txt)
 
 ## 2. Models and why we chose them
 
@@ -79,3 +80,34 @@ limits we found by hand in Milestone 3.
 1. Ask where `efficiency_class` came from. If it is a formula, say so in the project.
 2. Look for features that cause energy use and run time (model size, batch size, hardware type).
 3. Try a tuned Random Forest or gradient boosting on Set B once better features exist, with macro-F1 as the main metric.
+
+## 7. Extra experiment: can feature engineering replace energy and time?
+
+The coach asked whether new features, built without `energy_consumption_kwh` and `execution_time_ms`, can raise the accuracy. We built 8 features
+from the 8 columns that are known before a run, each with a clear reason:
+
+| New feature | Idea |
+|---|---|
+| `power_per_throughput` | Power for each operation per second |
+| `cpu_gpu_total` | Total CPU + GPU load |
+| `cpu_gpu_gap` | CPU load minus GPU load (balanced or not) |
+| `heat_per_watt` | Heat produced per watt |
+| `memory_per_throughput` | Memory needed per operation per second |
+| `load_x_power` | System load times power draw |
+| `power_per_util` | Power per unit of CPU + GPU use |
+| `throughput_per_load` | Work done per unit of system load |
+
+Results (baseline accuracy is 0.505):
+
+- **Models:** the best test accuracy is 0.504 (Decision Tree, depth 4). Random Forest, gradient boosting and Logistic Regression stay at or below the baseline.
+- **Mutual information with the class:** the best new feature scores 0.011, while `energy_consumption_kwh` scores 0.739.
+- **Rebuilding the missing columns:** predicting energy from the other features gives R2 = -0.04, so energy cannot be recovered from them.
+
+**Why it does not help:** the 8 pre-run columns are almost independent of each other (largest correlation 0.028, see Milestone 2), so mixing them does
+not create new information.
+
+**Limits of this experiment:** the settings were compared on the test set, so the best number is slightly optimistic, and it is still below the baseline.
+It shows that ratios, sums, differences and products of these columns do not help. It does not prove that no other feature could.
+The script reads the data only. It does not change any file in `data/`.
+
+To run it: `python feature_engineering_experiment.py` (needs pandas, numpy and scikit-learn; takes about 1.5 minutes).
